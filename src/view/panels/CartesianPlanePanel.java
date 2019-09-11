@@ -3,8 +3,6 @@ package view.panels;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -13,6 +11,8 @@ import controller.CartesianPlanePanelMouseController;
 import view.Main;
 
 public class CartesianPlanePanel extends JPanel {
+
+	private static final long serialVersionUID = 1L;
 
 	CartesianPlanePanelMouseController cpPanelMouseController;
 
@@ -32,6 +32,8 @@ public class CartesianPlanePanel extends JPanel {
 
 	public void paint(Graphics g) {
 
+		g.clearRect(0, 0, this.getWidth(), this.getHeight());
+		
 		g.drawLine(0, getHeight() / 2, getWidth(), getHeight() / 2);
 		g.drawString("X", getWidth() - 12, (getHeight() / 2) + 15);
 
@@ -47,7 +49,7 @@ public class CartesianPlanePanel extends JPanel {
 		
 		if (Main.pointList.size() >= 3) {
 			for (Point point : Main.curvePointList) {
-				g.setColor(Color.gray);
+				g.setColor(Color.red);
 				g.drawOval(point.x, point.y, 2, 2);
 			}
 		}

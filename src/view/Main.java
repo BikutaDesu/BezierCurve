@@ -16,13 +16,14 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import controller.buttons.ClearButtonController;
 import controller.buttons.CreateCurveButtonController;
 import view.panels.CartesianPlanePanel;
 
 public class Main extends JFrame {
 
 	private JPanel contentPane;
-	private JTable pointsTable;
+	public static JTable pointsTable;
 
 	public static JButton btnCriarCurva;
 	public static JButton btnLimpar;
@@ -31,6 +32,7 @@ public class Main extends JFrame {
 	public static List<Point> curvePointList = new ArrayList<Point>();
 
 	private CreateCurveButtonController createCurveButtonController;
+	private ClearButtonController clearButtonController;
 
 	/**
 	 * Launch the application.
@@ -95,9 +97,13 @@ public class Main extends JFrame {
 		btnCriarCurva.addActionListener(createCurveButtonController);
 		pnButtons.add(btnCriarCurva);
 
+		clearButtonController = new ClearButtonController(cartesianPlanePanel, tableModel);
+		
 		btnLimpar = new JButton("Limpar");
 		btnLimpar.setBounds(57, 145, 130, 23);
 		btnLimpar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnLimpar.setEnabled(false);
+		btnLimpar.addActionListener(clearButtonController);
 		pnButtons.add(btnLimpar);
 
 		contentPane.add(cartesianPlanePanel);

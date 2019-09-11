@@ -3,8 +3,6 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JPanel;
-
 import view.panels.CartesianPlanePanel;
 
 public class CartesianPlanePanelMouseController implements MouseListener{
